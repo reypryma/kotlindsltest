@@ -37,7 +37,7 @@ jobs:
       run: chmod +x gradlew
 
     - name: Check Gradle version
-      run: ./gradlew build
+      run: ./gradlew version
 
     - name: Build with Gradle Wrapper
       run: ./gradlew build
