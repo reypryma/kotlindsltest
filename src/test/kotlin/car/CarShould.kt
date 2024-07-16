@@ -1,7 +1,8 @@
 package car
 
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Test
+
+import junit.framework.TestCase.assertEquals
+import org.junit.Test
 import org.mockito.Mockito.*
 
 class CarShould {
@@ -21,6 +22,4 @@ class CarShould {
 
         verify(engine, times(1)).turnOn()
     }
-
-
 }
