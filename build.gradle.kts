@@ -10,14 +10,26 @@ version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
+    google()
 }
 
 dependencies {
-    testImplementation(kotlin("test"))
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.1")
+
+    testImplementation("junit:junit:4.13.1")
+    testImplementation("org.mockito:mockito-junit-jupiter:5.12.0")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:5.4.0")
+    testImplementation("org.mockito:mockito-inline:5.2.0")
 }
 
 tasks.test {
-    useJUnitPlatform()
+    useJUnit()
+    // Uncomment to include specific tests
+     include("car/AsyncCarShould*")
+     include("car/CarShould*")
+    // normally, individually to run gradlew test --tests "car.AsyncCarShould" --info
 }
 
 tasks.withType<KotlinCompile> {
@@ -26,12 +38,4 @@ tasks.withType<KotlinCompile> {
 
 application {
     mainClass.set("MainKt")
-}
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    testImplementation("org.mockito:mockito-junit-jupiter:5.12.0")
 }
